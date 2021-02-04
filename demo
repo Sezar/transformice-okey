@@ -1,0 +1,1365 @@
+for _, v in next, {'AutoTimeLeft', 'AutoShaman', 'AutoNewGame', 'AutoScore', 'AfkDeath', 'PhysicalConsumables'} do
+	tfm.exec['disable' .. v]()
+end
+
+tfm.exec.newGame(7828775)
+tfm.exec.setGameTime(99999)
+
+
+r1={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- siyah
+
+
+r2={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- kırmızı
+
+ 
+r3={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- yeşil
+
+
+r4={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- sarı
+
+
+r11={}
+r12={}
+r13={}
+r14={}
+
+r21={}
+r22={}
+r23={}
+r24={}
+
+r31={}
+r32={}
+r33={}
+r34={}
+
+r41={}
+r42={}
+r43={}
+r44={}
+
+
+y1=290
+x1=20
+y2=290
+x2=20
+y3=290
+x3=20
+y4=290
+x4=20
+takim={}
+
+
+function removekey(rx,sayi)
+for anahtar,deger in ipairs(rx) do
+
+if deger==sayi then
+table.remove(rx,anahtar)
+--print(sayi)
+break
+end
+
+end
+end
+
+function eventNewPlayer(name)
+takim[name]={takima=0,playeryer=0,ptas1=0}
+
+end
+for name in pairs (tfm.get.room.playerList) do
+	eventNewPlayer(name)
+end
+
+ui.addTextArea(1001,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a1'>Masa 1 Otur",nill,20,200,n,95,0x000000,0x000000,1)
+ui.addTextArea(1002,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a2'>Masa 2 Otur",nill,300,20,n,95,0x000000,0x000000,1)
+ui.addTextArea(1003,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a3'>Masa 3 Otur",nill,300,250,n,95,0x000000,0x000000,1)
+ui.addTextArea(1004,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a4'>Masa 4 Otur",nill,600,200,n,95,0x000000,0x000000,1)
+
+
+function eventTextAreaCallback(id, name, callback) --- callback start
+
+if callback=="a1" then
+takim[name].takima=1
+ui.removeTextArea(1001,nill)
+ui.removeTextArea(1002,name)
+ui.removeTextArea(1003,name)
+ui.removeTextArea(1004,name)
+ui.addTextArea(1006," ",nill,27,120,65,65,0x30BB34,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,60,150)
+ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
+ui.addTextArea(0,"<b><font size='15' color='#2CFF00'><p align='center'><a href='event:baslat'>Oyunu Baslat</p></font>Not!: 4 kişi masaya oturmadan başlatırsanız hata alırsınız.",name,350,120,100,120,0x30BB34,0xF8FF00,0.2)
+
+for i=1,26,1 do
+
+
+randomcolor1=math.random(1,4)
+
+if i<=14 then
+if randomcolor1==1 then
+sallama1=r1[math.random(#r1)]
+table.insert(r11,i,sallama1)
+removekey(r1,sallama1)
+ui.addTextArea(i,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..i.."'>"..sallama1,name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r11,i,-1)
+end
+if randomcolor1==2 then
+sallama1=r2[math.random(#r2)]
+table.insert(r12,i,sallama1)
+removekey(r2,sallama1)
+ui.addTextArea(i,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..i.."'>"..sallama1,name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r12,i,-2)
+end
+if randomcolor1==3 then
+sallama1=r3[math.random(#r3)]
+table.insert(r13,i,sallama1)
+removekey(r3,sallama1)
+ui.addTextArea(i,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..i.."'>"..sallama1,name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r13,i,-3)
+end
+if randomcolor1==4 then
+sallama1=r4[math.random(#r4)]
+table.insert(r14,i,sallama1)
+removekey(r4,sallama1)
+ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..i.."'>"..sallama1,name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r14,i,-4)
+end
+
+else -- i>13
+ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
+
+table.insert(r11,i,-1)
+table.insert(r12,i,-2)
+table.insert(r13,i,-3)
+table.insert(r14,i,-4)
+
+
+end --i<=13
+
+
+
+if y1<300 then
+y1=345
+else
+y1=290
+x1=x1+60
+end
+end
+
+
+
+end --a1 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+if callback=="a2" then
+takim[name].takima=2
+ui.removeTextArea(1001,name)
+ui.removeTextArea(1002,nill)
+ui.removeTextArea(1003,name)
+ui.removeTextArea(1004,name)
+ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,400,40)
+ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
+
+for i=1,26,1 do
+
+
+randomcolor2=math.random(1,4)
+
+if i<=13 then
+
+if randomcolor2==1 then
+sallama2=r1[math.random(#r1)]
+table.insert(r21,i,sallama2)
+removekey(r1,sallama2)
+ui.addTextArea(i,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..i.."'>"..sallama2,name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r21,i,-1)
+end
+if randomcolor2==2 then
+sallama2=r2[math.random(#r2)]
+table.insert(r22,i,sallama2)
+removekey(r2,sallama2)
+ui.addTextArea(i,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..i.."'>"..sallama2,name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r22,i,-2)
+end
+if randomcolor2==3 then
+sallama2=r3[math.random(#r3)]
+table.insert(r23,i,sallama2)
+removekey(r3,sallama2)
+ui.addTextArea(i,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..i.."'>"..sallama2,name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r23,i,-3)
+end
+if randomcolor2==4 then
+sallama2=r4[math.random(#r4)]
+table.insert(r24,i,sallama2)
+removekey(r4,sallama2)
+ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..i.."'>"..sallama2,name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r24,i,-4)
+end
+
+else -- i>13
+ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
+
+table.insert(r21,i,-1)
+table.insert(r22,i,-2)
+table.insert(r23,i,-3)
+table.insert(r24,i,-4)
+
+
+end --i<=13
+
+
+
+if y2<300 then
+y2=345
+else
+y2=290
+x2=x2+60
+end
+end
+
+
+end -- a2 end
+
+
+
+
+if callback=="a3" then
+takim[name].takima=3
+ui.removeTextArea(1001,name)
+ui.removeTextArea(1002,name)
+ui.removeTextArea(1003,nill)
+ui.removeTextArea(1004,name)
+ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2)
+
+ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
+tfm.exec.movePlayer(name,400,250)
+for i=1,26,1 do
+
+
+randomcolor3=math.random(1,4)
+
+if i<=13 then
+
+if randomcolor3==1 then
+sallama3=r1[math.random(#r1)]
+table.insert(r31,i,sallama3)
+removekey(r1,sallama3)
+ui.addTextArea(i,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..i.."'>"..sallama3,name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r31,i,-1)
+end
+if randomcolor3==2 then
+sallama3=r2[math.random(#r2)]
+table.insert(r32,i,sallama3)
+removekey(r2,sallama3)
+ui.addTextArea(i,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..i.."'>"..sallama3,name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r32,i,-2)
+end
+if randomcolor3==3 then
+sallama3=r3[math.random(#r3)]
+table.insert(r33,i,sallama3)
+removekey(r3,sallama3)
+ui.addTextArea(i,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..i.."'>"..sallama3,name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r33,i,-3)
+end
+if randomcolor3==4 then
+sallama3=r4[math.random(#r4)]
+table.insert(r34,i,sallama3)
+removekey(r4,sallama3)
+ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..i.."'>"..sallama3,name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r34,i,-4)
+end
+
+else -- i>13
+ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
+
+table.insert(r31,i,-1)
+table.insert(r32,i,-2)
+table.insert(r33,i,-3)
+table.insert(r34,i,-4)
+
+
+end --i<=13
+
+
+
+if y3<300 then
+y3=345
+else
+y3=290
+x3=x3+60
+end
+end
+
+
+
+end
+--- a3 end
+if callback=="a4" then
+takim[name].takima=4
+ui.removeTextArea(1001,name)
+ui.removeTextArea(1002,name)
+ui.removeTextArea(1003,name)
+ui.removeTextArea(1004,nill)
+ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,740,120)
+ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
+
+for i=1,26,1 do
+
+
+randomcolor4=math.random(1,4)
+
+if i<=13 then
+
+if randomcolor4==1 then
+sallama4=r1[math.random(#r1)]
+table.insert(r41,i,sallama4)
+removekey(r1,sallama4)
+ui.addTextArea(i,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..i.."'>"..sallama4,name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r41,i,-1)
+end
+if randomcolor4==2 then
+sallama4=r2[math.random(#r2)]
+table.insert(r42,i,sallama4)
+removekey(r2,sallama4)
+ui.addTextArea(i,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..i.."'>"..sallama4,name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r42,i,-2)
+end
+if randomcolor4==3 then
+sallama4=r3[math.random(#r3)]
+table.insert(r43,i,sallama4)
+removekey(r3,sallama4)
+ui.addTextArea(i,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..i.."'>"..sallama4,name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r43,i,-3)
+end
+if randomcolor4==4 then
+sallama4=r4[math.random(#r4)]
+table.insert(r44,i,sallama4)
+removekey(r4,sallama4)
+ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..i.."'>"..sallama4,name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
+else
+table.insert(r44,i,-4)
+end
+
+else -- i>13
+ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
+
+table.insert(r41,i,-1)
+table.insert(r42,i,-2)
+table.insert(r43,i,-3)
+table.insert(r44,i,-4)
+
+
+end --i<=13
+
+
+
+if y4<300 then
+y4=345
+else
+y4=290
+x4=x4+60
+end
+end
+end 
+--- a4 end
+
+
+
+if takim[name].takima==1 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis1(i,name)
+end
+end
+end
+
+if takim[name].takima==2 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis2(i,name)
+end
+end
+end
+
+if takim[name].takima==3 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis3(i,name)
+end
+end
+end
+
+if takim[name].takima==4 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis4(i,name)
+end
+end
+end
+
+
+-- baslat bas
+
+
+if callback=="baslat" then
+ui.removeTextArea(0,name)
+ui.addTextArea(1011,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer1'>1",nill,150,220,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1012,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer2'>2",nill,150,80,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1013,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer3'>3",nill,610,80,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1014,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer4'>4",nill,610,220,45,45,0xFFFFFF,0xFFFFFF,500)
+end
+
+
+-- baslat son
+
+
+
+
+
+
+end -- callback end
+
+
+
+
+
+
+
+
+
+
+
+function tasdegis1(i,name) -- tas1 fonk bas
+if takim[name].playeryer==1 then
+k1=i
+
+--- Siyahtan verme baş
+if r11[j1] > 0 then 
+if r11[k1] > 0 then
+k11=r11[i]
+r11[j1]=k11
+r11[k1]=j11
+ui.updateTextArea(k1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k1.."'>"..j11,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j1.."'>"..k11,name)
+print("1 ------s1---------")
+end
+if r11[k1] == -1 then
+k11=r11[i]
+r11[j1]=k11
+r11[k1]=j11
+ui.updateTextArea(k1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k1.."'>"..j11,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j1.."'>X",name)
+print("1 -------s2--------")
+end
+if r12[k1] > 0 then
+k11=r12[i]
+r11[j1]=-1
+r12[k1]=-2
+r12[j1]=k11
+r11[k1]=j11
+ui.updateTextArea(k1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k1.."'>"..j11,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j1.."'>"..k11,name)
+print("1 ----------s3-----")
+end
+if r13[k1] > 0 then
+k11=r13[i]
+r11[j1]=-1
+r13[k1]=-3
+r13[j1]=k11
+r11[k1]=j11
+ui.updateTextArea(k1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k1.."'>"..j11,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j1.."'>"..k11,name)
+print("1 -----------s4----")
+end
+if r14[k1] > 0 then
+k11=r14[i]
+r11[j1]=-1
+r14[k1]=-4
+r14[j1]=k11
+r11[k1]=j11
+ui.updateTextArea(k1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k1.."'>"..j11,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j1.."'>"..k11,name)
+print("1 --------s5-------")
+end 
+--- Siyahtan verme son
+
+--- Kırmızı verme baş
+elseif r12[j1] > 0 then --- Siyahtan verme baş
+if r12[k1] > 0 then
+k12=r12[i]
+r12[j1]=k12
+r12[k1]=j12
+ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k1.."'>"..j12,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j1.."'>"..k12,name)
+print("1 ----------kkk1-----")
+end
+if r12[k1] == -2 then
+k12=r12[i]
+r12[j1]=k12
+r12[k1]=j12
+ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k1.."'>"..j12,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j1.."'>X",name)
+print("1 -------k2--------")
+end
+if r11[k1] > 0 then
+k12=r11[i]
+r12[j1]=-2
+r11[k1]=-1
+r11[j1]=k12
+r12[k1]=j12
+ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k1.."'>"..j12,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j1.."'>"..k12,name)
+print("1 --------k3-------")
+end
+if r13[k1] > 0 then
+k12=r13[i]
+r12[j1]=-2
+r13[k1]=-3
+r13[j1]=k12
+r12[k1]=j12
+ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k1.."'>"..j12,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j1.."'>"..k12,name)
+print("1 -----------k4----")
+end
+if r14[k1] > 0 then
+k12=r14[i]
+r12[j1]=-2
+r14[k1]=-4
+r14[j1]=k12
+r12[k1]=j12
+ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k1.."'>"..j12,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j1.."'>"..k12,name)
+print("1 ---------k5------")
+end --- Kırmızı verme son
+
+--- yeşil verme baş
+elseif r13[j1] > 0 then --- Siyahtan verme baş
+if r13[k1] > 0 then
+k13=r13[i]
+r13[j1]=k13
+r13[k1]=j13
+ui.updateTextArea(k1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k1.."'>"..j13,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j1.."'>"..k13,name)
+print("1 ----------kkk1-----")
+end
+if r13[k1] == -3 then
+k13=r13[i]
+r13[j1]=k13
+r13[k1]=j13
+ui.updateTextArea(k1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k1.."'>"..j13,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j1.."'>X",name)
+print("1 -------k2--------")
+end
+if r11[k1] > 0 then
+k13=r11[i]
+r13[j1]=-3
+r11[k1]=-1
+r11[j1]=k13
+r13[k1]=j13
+ui.updateTextArea(k1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k1.."'>"..j13,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j1.."'>"..k13,name)
+print("1 --------k3-------")
+end
+if r12[k1] > 0 then
+k13=r12[i]
+r13[j1]=-3
+r12[k1]=-2
+r12[j1]=k13
+r13[k1]=j13
+ui.updateTextArea(k1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k1.."'>"..j13,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j1.."'>"..k13,name)
+print("1 -----------k4----")
+end
+if r14[k1] > 0 then
+k13=r14[i]
+r13[j1]=-3
+r14[k1]=-4
+r14[j1]=k13
+r13[k1]=j13
+ui.updateTextArea(k1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k1.."'>"..j13,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j1.."'>"..k13,name)
+print("1 ---------k5------")
+end 
+--- yeşil verme son
+
+--- Sarı verme baş
+elseif r14[j1] > 0 then --- Siyahtan verme baş
+if r14[k1] > 0 then
+k14=r14[i]
+r14[j1]=k14
+r14[k1]=j14
+ui.updateTextArea(k1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k1.."'>"..j14,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j1.."'>"..k14,name)
+print("1 ----------kkk1-----")
+end
+if r14[k1] == -4 then
+k14=r14[i]
+r14[j1]=k14
+r14[k1]=j14
+ui.updateTextArea(k1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k1.."'>"..j14,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j1.."'>X",name)
+print("1 -------k2--------")
+end
+if r11[k1] > 0 then
+k14=r11[i]
+r14[j1]=-4
+r11[k1]=-1
+r11[j1]=k14
+r14[k1]=j14
+ui.updateTextArea(k1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k1.."'>"..j14,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j1.."'>"..k14,name)
+print("1 --------k3-------")
+end
+if r12[k1] > 0 then
+k14=r12[i]
+r14[j1]=-4
+r12[k1]=-2
+r12[j1]=k14
+r14[k1]=j14
+ui.updateTextArea(k1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k1.."'>"..j14,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j1.."'>"..k14,name)
+print("1 -----------k4----")
+end
+if r13[k1] > 0 then
+k14=r13[i]
+r14[j1]=-4
+r13[k1]=-3
+r13[j1]=k14
+r14[k1]=j14
+ui.updateTextArea(k1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k1.."'>"..j14,name)
+ui.updateTextArea(j1,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j1.."'>"..k14,name)
+print("1 ---------k5------")
+end 
+--- sarı son
+end --- else son
+takim[name].playeryer=0
+else
+j1=i
+j11=r11[i]
+j12=r12[i]
+j13=r13[i]
+j14=r14[i]
+takim[name].playeryer=1
+end
+end --- tas1 fonk end
+
+function tasdegis2(i,name) -- tas2 fonk bas
+if takim[name].playeryer==1 then
+k2=i
+
+--- Siyahtan verme baş
+if r21[j2] > 0 then 
+if r21[k2] > 0 then
+k21=r21[i]
+r21[j2]=k21
+r21[k2]=j21
+ui.updateTextArea(k2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k2.."'>"..j21,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j2.."'>"..k21,name)
+print("1 ------s1---------")
+end
+if r21[k2] == -1 then
+k21=r21[i]
+r21[j2]=k21
+r21[k2]=j21
+ui.updateTextArea(k2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k2.."'>"..j21,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j2.."'>X",name)
+print("1 -------s2--------")
+end
+if r22[k2] > 0 then
+k21=r22[i]
+r21[j2]=-1
+r22[k2]=-2
+r22[j2]=k21
+r21[k2]=j21
+ui.updateTextArea(k2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k2.."'>"..j21,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j2.."'>"..k21,name)
+print("1 ----------s3-----")
+end
+if r23[k2] > 0 then
+k21=r23[i]
+r21[j2]=-1
+r23[k2]=-3
+r23[j2]=k21
+r21[k2]=j21
+ui.updateTextArea(k2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k2.."'>"..j21,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j2.."'>"..k21,name)
+print("1 -----------s4----")
+end
+if r24[k2] > 0 then
+k21=r24[i]
+r21[j2]=-1
+r24[k2]=-4
+r24[j2]=k21
+r21[k2]=j21
+ui.updateTextArea(k2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k2.."'>"..j21,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j2.."'>"..k21,name)
+print("1 --------s5-------")
+end 
+--- Siyahtan verme son
+
+--- Kırmızı verme baş
+elseif r22[j2] > 0 then --- Siyahtan verme baş
+if r22[k2] > 0 then
+k22=r22[i]
+r22[j2]=k22
+r22[k2]=j22
+ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k2.."'>"..j22,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j2.."'>"..k22,name)
+print("1 ----------kkk1-----")
+end
+if r22[k2] == -2 then
+k22=r22[i]
+r22[j2]=k22
+r22[k2]=j22
+ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k2.."'>"..j22,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j2.."'>X",name)
+print("1 -------k2--------")
+end
+if r21[k2] > 0 then
+k22=r21[i]
+r22[j2]=-2
+r21[k2]=-1
+r21[j2]=k22
+r22[k2]=j22
+ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k2.."'>"..j22,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j2.."'>"..k22,name)
+print("1 --------k3-------")
+end
+if r23[k2] > 0 then
+k22=r23[i]
+r22[j2]=-2
+r23[k2]=-3
+r23[j2]=k22
+r22[k2]=j22
+ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k2.."'>"..j22,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j2.."'>"..k22,name)
+print("1 -----------k4----")
+end
+if r24[k2] > 0 then
+k22=r24[i]
+r22[j2]=-2
+r24[k2]=-4
+r24[j2]=k22
+r22[k2]=j22
+ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k2.."'>"..j22,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j2.."'>"..k22,name)
+print("1 ---------k5------")
+end --- Kırmızı verme son
+
+--- yeşil verme baş
+elseif r23[j2] > 0 then --- Siyahtan verme baş
+if r23[k2] > 0 then
+k23=r23[i]
+r23[j2]=k23
+r23[k2]=j23
+ui.updateTextArea(k2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k2.."'>"..j23,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j2.."'>"..k23,name)
+print("1 ----------kkk1-----")
+end
+if r23[k2] == -3 then
+k23=r23[i]
+r23[j2]=k23
+r23[k2]=j23
+ui.updateTextArea(k2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k2.."'>"..j23,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j2.."'>X",name)
+print("1 -------k2--------")
+end
+if r21[k2] > 0 then
+k23=r21[i]
+r23[j2]=-3
+r21[k2]=-1
+r21[j2]=k23
+r23[k2]=j23
+ui.updateTextArea(k2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k2.."'>"..j23,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j2.."'>"..k23,name)
+print("1 --------k3-------")
+end
+if r22[k2] > 0 then
+k23=r22[i]
+r23[j2]=-3
+r22[k2]=-2
+r22[j2]=k23
+r23[k2]=j23
+ui.updateTextArea(k2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k2.."'>"..j23,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j2.."'>"..k23,name)
+print("1 -----------k4----")
+end
+if r24[k2] > 0 then
+k23=r24[i]
+r23[j2]=-3
+r24[k2]=-4
+r24[j2]=k23
+r23[k2]=j23
+ui.updateTextArea(k2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k2.."'>"..j23,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j2.."'>"..k23,name)
+print("1 ---------k5------")
+end 
+--- yeşil verme son
+
+--- Sarı verme baş
+elseif r24[j2] > 0 then --- Siyahtan verme baş
+if r24[k2] > 0 then
+k24=r24[i]
+r24[j2]=k24
+r24[k2]=j24
+ui.updateTextArea(k2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k2.."'>"..j24,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j2.."'>"..k24,name)
+print("1 ----------kkk1-----")
+end
+if r24[k2] == -4 then
+k24=r24[i]
+r24[j2]=k24
+r24[k2]=j24
+ui.updateTextArea(k2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k2.."'>"..j24,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j2.."'>X",name)
+print("1 -------k2--------")
+end
+if r21[k2] > 0 then
+k24=r21[i]
+r24[j2]=-4
+r21[k2]=-1
+r21[j2]=k24
+r24[k2]=j24
+ui.updateTextArea(k2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k2.."'>"..j24,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j2.."'>"..k24,name)
+print("1 --------k3-------")
+end
+if r22[k2] > 0 then
+k24=r22[i]
+r24[j2]=-4
+r22[k2]=-2
+r22[j2]=k24
+r24[k2]=j24
+ui.updateTextArea(k2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k2.."'>"..j24,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j2.."'>"..k24,name)
+print("1 -----------k4----")
+end
+if r23[k2] > 0 then
+k24=r23[i]
+r24[j2]=-4
+r23[k2]=-3
+r23[j2]=k24
+r24[k2]=j24
+ui.updateTextArea(k2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k2.."'>"..j24,name)
+ui.updateTextArea(j2,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j2.."'>"..k24,name)
+print("1 ---------k5------")
+end 
+--- sarı son
+end --- else son
+takim[name].playeryer=0
+else
+j2=i
+j21=r21[i]
+j22=r22[i]
+j23=r23[i]
+j24=r24[i]
+takim[name].playeryer=1
+end
+end --- tas2 fonk end
+
+function tasdegis3(i,name) -- tas3 fonk bas
+if takim[name].playeryer==1 then
+k3=i
+
+--- Siyahtan verme baş
+if r31[j3] > 0 then 
+if r31[k3] > 0 then
+k31=r31[i]
+r31[j3]=k31
+r31[k3]=j31
+ui.updateTextArea(k3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k3.."'>"..j31,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j3.."'>"..k31,name)
+print("1 ------s1---------")
+end
+if r31[k3] == -1 then
+k31=r31[i]
+r31[j3]=k31
+r31[k3]=j31
+ui.updateTextArea(k3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k3.."'>"..j31,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j3.."'>X",name)
+print("1 -------s2--------")
+end
+if r32[k3] > 0 then
+k31=r32[i]
+r31[j3]=-1
+r32[k3]=-2
+r32[j3]=k31
+r31[k3]=j31
+ui.updateTextArea(k3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k3.."'>"..j31,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j3.."'>"..k31,name)
+print("1 ----------s3-----")
+end
+if r33[k3] > 0 then
+k31=r33[i]
+r31[j3]=-1
+r33[k3]=-3
+r33[j3]=k31
+r31[k3]=j31
+ui.updateTextArea(k3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k3.."'>"..j31,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j3.."'>"..k31,name)
+print("1 -----------s4----")
+end
+if r34[k3] > 0 then
+k31=r34[i]
+r31[j3]=-1
+r34[k3]=-4
+r34[j3]=k31
+r31[k3]=j31
+ui.updateTextArea(k3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k3.."'>"..j31,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j3.."'>"..k31,name)
+print("1 --------s5-------")
+end 
+--- Siyahtan verme son
+
+--- Kırmızı verme baş
+elseif r32[j3] > 0 then --- Siyahtan verme baş
+if r32[k3] > 0 then
+k32=r32[i]
+r32[j3]=k32
+r32[k3]=j32
+ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k3.."'>"..j32,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j3.."'>"..k32,name)
+print("1 ----------kkk1-----")
+end
+if r32[k3] == -2 then
+k32=r32[i]
+r32[j3]=k32
+r32[k3]=j32
+ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k3.."'>"..j32,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j3.."'>X",name)
+print("1 -------k2--------")
+end
+if r31[k3] > 0 then
+k32=r31[i]
+r32[j3]=-2
+r31[k3]=-1
+r31[j3]=k32
+r32[k3]=j32
+ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k3.."'>"..j32,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j3.."'>"..k32,name)
+print("1 --------k3-------")
+end
+if r33[k3] > 0 then
+k32=r33[i]
+r32[j3]=-2
+r33[k3]=-3
+r33[j3]=k32
+r32[k3]=j32
+ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k3.."'>"..j32,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j3.."'>"..k32,name)
+print("1 -----------k4----")
+end
+if r34[k3] > 0 then
+k32=r34[i]
+r32[j3]=-2
+r34[k3]=-4
+r34[j3]=k32
+r32[k3]=j32
+ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k3.."'>"..j32,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j3.."'>"..k32,name)
+print("1 ---------k5------")
+end --- Kırmızı verme son
+
+--- yeşil verme baş
+elseif r33[j3] > 0 then --- Siyahtan verme baş
+if r33[k3] > 0 then
+k33=r33[i]
+r33[j3]=k33
+r33[k3]=j33
+ui.updateTextArea(k3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k3.."'>"..j33,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j3.."'>"..k33,name)
+print("1 ----------kkk1-----")
+end
+if r33[k3] == -3 then
+k33=r33[i]
+r33[j3]=k33
+r33[k3]=j33
+ui.updateTextArea(k3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k3.."'>"..j33,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j3.."'>X",name)
+print("1 -------k2--------")
+end
+if r31[k3] > 0 then
+k33=r31[i]
+r33[j3]=-3
+r31[k3]=-1
+r31[j3]=k33
+r33[k3]=j33
+ui.updateTextArea(k3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k3.."'>"..j33,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j3.."'>"..k33,name)
+print("1 --------k3-------")
+end
+if r32[k3] > 0 then
+k33=r32[i]
+r33[j3]=-3
+r32[k3]=-2
+r32[j3]=k33
+r33[k3]=j33
+ui.updateTextArea(k3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k3.."'>"..j33,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j3.."'>"..k33,name)
+print("1 -----------k4----")
+end
+if r34[k3] > 0 then
+k33=r34[i]
+r33[j3]=-3
+r34[k3]=-4
+r34[j3]=k33
+r33[k3]=j33
+ui.updateTextArea(k3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k3.."'>"..j33,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j3.."'>"..k33,name)
+print("1 ---------k5------")
+end 
+--- yeşil verme son
+
+--- Sarı verme baş
+elseif r34[j3] > 0 then --- Siyahtan verme baş
+if r34[k3] > 0 then
+k34=r34[i]
+r34[j3]=k34
+r34[k3]=j34
+ui.updateTextArea(k3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k3.."'>"..j34,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j3.."'>"..k34,name)
+print("1 ----------kkk1-----")
+end
+if r34[k3] == -4 then
+k34=r34[i]
+r34[j3]=k34
+r34[k3]=j34
+ui.updateTextArea(k3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k3.."'>"..j34,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j3.."'>X",name)
+print("1 -------k2--------")
+end
+if r31[k3] > 0 then
+k34=r31[i]
+r34[j3]=-4
+r31[k3]=-1
+r31[j3]=k34
+r34[k3]=j34
+ui.updateTextArea(k3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k3.."'>"..j34,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j3.."'>"..k34,name)
+print("1 --------k3-------")
+end
+if r32[k3] > 0 then
+k34=r32[i]
+r34[j3]=-4
+r32[k3]=-2
+r32[j3]=k34
+r34[k3]=j34
+ui.updateTextArea(k3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k3.."'>"..j34,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j3.."'>"..k34,name)
+print("1 -----------k4----")
+end
+if r33[k3] > 0 then
+k34=r33[i]
+r34[j3]=-4
+r33[k3]=-3
+r33[j3]=k34
+r34[k3]=j34
+ui.updateTextArea(k3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k3.."'>"..j34,name)
+ui.updateTextArea(j3,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j3.."'>"..k34,name)
+print("1 ---------k5------")
+end 
+--- sarı son
+end --- else son
+takim[name].playeryer=0
+else
+j3=i
+j31=r31[i]
+j32=r32[i]
+j33=r33[i]
+j34=r34[i]
+takim[name].playeryer=1
+end
+end --- tas3 fonk end
+
+function tasdegis4(i,name) -- tas4 fonk bas
+if takim[name].playeryer==1 then
+k4=i
+
+--- Siyahtan verme baş
+if r41[j4] > 0 then 
+if r41[k4] > 0 then
+k41=r41[i]
+r41[j4]=k41
+r41[k4]=j41
+ui.updateTextArea(k4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k4.."'>"..j41,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j4.."'>"..k41,name)
+print("1 ------s1---------")
+end
+if r41[k4] == -1 then
+k41=r41[i]
+r41[j4]=k41
+r41[k4]=j41
+ui.updateTextArea(k4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k4.."'>"..j41,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j4.."'>X",name)
+print("1 -------s2--------")
+end
+if r42[k4] > 0 then
+k41=r42[i]
+r41[j4]=-1
+r42[k4]=-2
+r42[j4]=k41
+r41[k4]=j41
+ui.updateTextArea(k4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k4.."'>"..j41,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j4.."'>"..k41,name)
+print("1 ----------s3-----")
+end
+if r43[k4] > 0 then
+k41=r43[i]
+r41[j4]=-1
+r43[k4]=-3
+r43[j4]=k41
+r41[k4]=j41
+ui.updateTextArea(k4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k4.."'>"..j41,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j4.."'>"..k41,name)
+print("1 -----------s4----")
+end
+if r44[k4] > 0 then
+k41=r44[i]
+r41[j4]=-1
+r44[k4]=-4
+r44[j4]=k41
+r41[k4]=j41
+ui.updateTextArea(k4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..k4.."'>"..j41,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j4.."'>"..k41,name)
+print("1 --------s5-------")
+end 
+--- Siyahtan verme son
+
+--- Kırmızı verme baş
+elseif r42[j4] > 0 then --- Siyahtan verme baş
+if r42[k4] > 0 then
+k42=r42[i]
+r42[j4]=k42
+r42[k4]=j42
+ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k4.."'>"..j42,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j4.."'>"..k42,name)
+print("1 ----------kkk1-----")
+end
+if r42[k4] == -2 then
+k42=r42[i]
+r42[j4]=k42
+r42[k4]=j42
+ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k4.."'>"..j42,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j4.."'>X",name)
+print("1 -------k2--------")
+end
+if r41[k4] > 0 then
+k42=r41[i]
+r42[j4]=-2
+r41[k4]=-1
+r41[j4]=k42
+r42[k4]=j42
+ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k4.."'>"..j42,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j4.."'>"..k42,name)
+print("1 --------k3-------")
+end
+if r43[k4] > 0 then
+k42=r43[i]
+r42[j4]=-2
+r43[k4]=-3
+r43[j4]=k42
+r42[k4]=j42
+ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k4.."'>"..j42,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j4.."'>"..k42,name)
+print("1 -----------k4----")
+end
+if r44[k4] > 0 then
+k42=r44[i]
+r42[j4]=-2
+r44[k4]=-4
+r44[j4]=k42
+r42[k4]=j42
+ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..k4.."'>"..j42,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j4.."'>"..k42,name)
+print("1 ---------k5------")
+end --- Kırmızı verme son
+
+--- yeşil verme baş
+elseif r43[j4] > 0 then --- Siyahtan verme baş
+if r43[k4] > 0 then
+k43=r43[i]
+r43[j4]=k43
+r43[k4]=j43
+ui.updateTextArea(k4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k4.."'>"..j43,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j4.."'>"..k43,name)
+print("1 ----------kkk1-----")
+end
+if r43[k4] == -3 then
+k43=r43[i]
+r43[j4]=k43
+r43[k4]=j43
+ui.updateTextArea(k4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k4.."'>"..j43,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j4.."'>X",name)
+print("1 -------k2--------")
+end
+if r41[k4] > 0 then
+k43=r41[i]
+r43[j4]=-3
+r41[k4]=-1
+r41[j4]=k43
+r43[k4]=j43
+ui.updateTextArea(k4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k4.."'>"..j43,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j4.."'>"..k43,name)
+print("1 --------k3-------")
+end
+if r42[k4] > 0 then
+k43=r42[i]
+r43[j4]=-3
+r42[k4]=-2
+r42[j4]=k43
+r43[k4]=j43
+ui.updateTextArea(k4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k4.."'>"..j43,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j4.."'>"..k43,name)
+print("1 -----------k4----")
+end
+if r44[k4] > 0 then
+k43=r44[i]
+r43[j4]=-3
+r44[k4]=-4
+r44[j4]=k43
+r43[k4]=j43
+ui.updateTextArea(k4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..k4.."'>"..j43,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j4.."'>"..k43,name)
+print("1 ---------k5------")
+end 
+--- yeşil verme son
+
+--- Sarı verme baş
+elseif r44[j4] > 0 then --- Siyahtan verme baş
+if r44[k4] > 0 then
+k44=r44[i]
+r44[j4]=k44
+r44[k4]=j44
+ui.updateTextArea(k4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k4.."'>"..j44,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j4.."'>"..k44,name)
+print("1 ----------kkk1-----")
+end
+if r44[k4] == -4 then
+k44=r44[i]
+r44[j4]=k44
+r44[k4]=j44
+ui.updateTextArea(k4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k4.."'>"..j44,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..j4.."'>X",name)
+print("1 -------k2--------")
+end
+if r41[k4] > 0 then
+k44=r41[i]
+r44[j4]=-4
+r41[k4]=-1
+r41[j4]=k44
+r44[k4]=j44
+ui.updateTextArea(k4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k4.."'>"..j44,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..j4.."'>"..k44,name)
+print("1 --------k3-------")
+end
+if r42[k4] > 0 then
+k44=r42[i]
+r44[j4]=-4
+r42[k4]=-2
+r42[j4]=k44
+r44[k4]=j44
+ui.updateTextArea(k4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k4.."'>"..j44,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..j4.."'>"..k44,name)
+print("1 -----------k4----")
+end
+if r43[k4] > 0 then
+k44=r43[i]
+r44[j4]=-4
+r43[k4]=-3
+r43[j4]=k44
+r44[k4]=j44
+ui.updateTextArea(k4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..k4.."'>"..j44,name)
+ui.updateTextArea(j4,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..j4.."'>"..k44,name)
+print("1 ---------k5------")
+end 
+--- sarı son
+end --- else son
+takim[name].playeryer=0
+else
+j4=i
+j41=r41[i]
+j42=r42[i]
+j43=r43[i]
+j44=r44[i]
+takim[name].playeryer=1
+end
+end --- tas4 fonk end
+
+
+
+
+
+
+
+
+
+
+
+
+function eventChatMessage(name,message)
+if message=="si1" then
+for anahtar,deger in ipairs(r11) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |siyah "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+
+if message=="ki1" then
+for anahtar,deger in ipairs(r12) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |k "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+
+if message=="ye1" then
+for anahtar,deger in ipairs(r13) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |y "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+
+if message=="sa1" then
+for anahtar,deger in ipairs(r14) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |sari "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
