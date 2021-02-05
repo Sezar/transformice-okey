@@ -1,44 +1,36 @@
 for _, v in next, {'AutoTimeLeft', 'AutoShaman', 'AutoNewGame', 'AutoScore', 'AfkDeath', 'PhysicalConsumables'} do
 	tfm.exec['disable' .. v]()
 end
-
 tfm.exec.newGame(7828775)
 tfm.exec.setGameTime(99999)
-
-
 r1={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- siyah
-
-
 r2={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- kırmızı
-
- 
 r3={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- yeşil
-
-
 r4={1,2,3,4,5,6,7,8,9,10,11,12,13,1,2,3,4,5,6,7,8,9,10,11,12,13} -- sarı
-
-
+masa1={}
+masa2={}
+masa3={}
+masa4={}
 r11={}
 r12={}
 r13={}
 r14={}
-
 r21={}
 r22={}
 r23={}
 r24={}
-
 r31={}
 r32={}
 r33={}
 r34={}
-
 r41={}
 r42={}
 r43={}
 r44={}
-
-
+yer1={}
+yer2={}
+yer3={}
+yer4={}
 y1=290
 x1=20
 y2=290
@@ -48,38 +40,592 @@ x3=20
 y4=290
 x4=20
 takim={}
-
-
+---function eventLoop()
+---for name in pairs (tfm.get.room.playerList) do
+---print(name.." "..takim[name].sira)
+---end
+---end
 function removekey(rx,sayi)
 for anahtar,deger in ipairs(rx) do
-
 if deger==sayi then
 table.remove(rx,anahtar)
 --print(sayi)
 break
 end
-
 end
 end
-
 function eventNewPlayer(name)
-takim[name]={takima=0,playeryer=0,ptas1=0}
-
+takim[name]={takima=0,playeryer=0,ptas1=0,sira=0,siraa=0}
 end
 for name in pairs (tfm.get.room.playerList) do
 	eventNewPlayer(name)
 end
-
 ui.addTextArea(1001,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a1'>Masa 1 Otur",nill,20,200,n,95,0x000000,0x000000,1)
-ui.addTextArea(1002,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a2'>Masa 2 Otur",nill,300,20,n,95,0x000000,0x000000,1)
-ui.addTextArea(1003,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a3'>Masa 3 Otur",nill,300,250,n,95,0x000000,0x000000,1)
-ui.addTextArea(1004,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a4'>Masa 4 Otur",nill,600,200,n,95,0x000000,0x000000,1)
-
-
+ui.addTextArea(1002,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a2'>Masa 2 Otur",nill,300,250,n,95,0x000000,0x000000,1)
+ui.addTextArea(1003,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a3'>Masa 3 Otur",nill,600,200,n,95,0x000000,0x000000,1)
+ui.addTextArea(1004,"<b><font size='25' color='#2CFF00'><p align='center'><a href='event:a4'>Masa 4 Otur",nill,300,20,n,95,0x000000,0x000000,1)
 function eventTextAreaCallback(id, name, callback) --- callback start
-
+if callback=="okey" then --- okey
+if takim[name].takima==1 then  --- takim 1
+print(name)
+end --- takim 1
+end --- okey
+if takim[name].takima==4 then --- takim 4 end
+if takim[name].sira==0 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis4(i,name)
+end
+end
+elseif takim[name].sira==1 then
+if callback=="yer3" then
+if yerid4==1 then
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+table.insert(r41,t,yer3)
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..yer3,name)
+break
+end
+end
+elseif yerid4==2 then
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+table.insert(r42,t,yer3)
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..yer3,name)
+break
+end
+end
+elseif yerid4==3 then
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+table.insert(r43,t,yer3)
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..yer3,name)
+break
+end
+end
+elseif yerid4==4 then
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+table.insert(r44,t,yer3)
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..yer3,name)
+break
+end
+end
+end
+ui.updateTextArea(1013,"<b><font size='25' color='#FFFFFF'>X",nill)
+takim[name].sira=2
+end
+if callback=="tascek" then
+tasrenkrandom4=math.random(1,4)
+if tasrenkrandom4==1 then
+tas41=r1[math.random(#r1)]
+removekey(r1,tas41)
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..tas41,name)
+table.insert(r41,t,tas41)
+break
+end
+end
+elseif tasrenkrandom4==2 then
+tas42=r2[math.random(#r2)]
+removekey(r2,tas42)
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..tas42,name)
+table.insert(r42,t,tas42)
+break
+end
+end
+elseif tasrenkrandom4==3 then
+tas43=r3[math.random(#r3)]
+removekey(r3,tas43)
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..tas43,name)
+table.insert(r43,t,tas43)
+break
+end
+end
+elseif tasrenkrandom4==4 then
+tas44=r4[math.random(#r4)]
+removekey(r4,tas44)
+for t=1,26,1 do
+if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..tas44,name)
+table.insert(r44,t,tas44)
+break
+end
+end
+end
+takim[name].sira=2
+end -- tascek
+elseif takim[name].sira==2 then
+for k=1,26,1 do
+if callback=="x"..k then
+if r41[k] ~= -1 then
+yer4=r41[k]
+yerid4=1
+r41[k]=-1
+ui.updateTextArea(1014,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer4'>"..yer4,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r42[k] ~= -2 then
+yer4=r42[k]
+yerid4=2
+r42[k]=-2
+ui.updateTextArea(1014,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:yer4'>"..yer4,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r43[k] ~= -3 then
+yer4=r43[k]
+yerid4=3
+r43[k]=-3
+ui.updateTextArea(1014,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:yer4'>"..yer4,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r44[k] ~= -4 then
+yer4=r44[k]
+yerid4=4
+r44[k]=-4
+ui.updateTextArea(1014,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:yer4'>"..yer4,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+end
+ui.addTextArea(1006," ",nill,27,120,65,65,0x30BB34,0xF8FF00,0.2) --- 1
+ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
+ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2) --- 3
+ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2) --- 4
+end
+end
+end
+end --- takim 4 end
+if takim[name].takima==3 then --- takim 3 end
+if takim[name].sira==0 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis3(i,name)
+end
+end
+elseif takim[name].sira==1 then
+if callback=="yer2" then
+if yerid4==1 then
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+table.insert(r31,t,yer2)
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..yer2,name)
+break
+end
+end
+elseif yerid4==2 then
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+table.insert(r32,t,yer2)
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..yer2,name)
+break
+end
+end
+elseif yerid4==3 then
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+table.insert(r33,t,yer2)
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..yer2,name)
+break
+end
+end
+elseif yerid4==4 then
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+table.insert(r34,t,yer2)
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..yer2,name)
+break
+end
+end
+end
+ui.updateTextArea(1012,"<b><font size='25' color='#FFFFFF'>X",nill)
+takim[name].sira=2
+end
+if callback=="tascek" then
+tasrenkrandom3=math.random(1,4)
+if tasrenkrandom3==1 then
+tas31=r1[math.random(#r1)]
+removekey(r1,tas31)
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..tas31,name)
+table.insert(r31,t,tas31)
+break
+end
+end
+elseif tasrenkrandom3==2 then
+tas32=r2[math.random(#r2)]
+removekey(r2,tas32)
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..tas32,name)
+table.insert(r32,t,tas32)
+break
+end
+end
+elseif tasrenkrandom3==3 then
+tas33=r3[math.random(#r3)]
+removekey(r3,tas33)
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..tas33,name)
+table.insert(r33,t,tas33)
+break
+end
+end
+elseif tasrenkrandom3==4 then
+tas34=r4[math.random(#r4)]
+removekey(r4,tas34)
+for t=1,26,1 do
+if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..tas34,name)
+table.insert(r34,t,tas34)
+break
+end
+end
+end
+takim[name].sira=2
+end -- tascek
+elseif takim[name].sira==2 then
+for k=1,26,1 do
+if callback=="x"..k then
+if r31[k] ~= -1 then
+yer3=r31[k]
+yerid4=1
+r31[k]=-1
+ui.updateTextArea(1013,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer3'>"..yer3,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa4].sira=1
+elseif r32[k] ~= -2 then
+yer3=r32[k]
+yerid4=2
+r32[k]=-2
+ui.updateTextArea(1013,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:yer3'>"..yer3,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa4].sira=1
+elseif r33[k] ~= -3 then
+yer3=r33[k]
+yerid4=3
+r33[k]=-3
+ui.updateTextArea(1013,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:yer3'>"..yer3,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa4].sira=1
+elseif r34[k] ~= -4 then
+yer3=r34[k]
+yerid4=4
+r34[k]=-4
+ui.updateTextArea(1013,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:yer3'>"..yer3,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa4].sira=1
+end
+ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
+ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
+ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2) --- 3
+ui.addTextArea(1007," ",nill,360,20,65,65,0x30BB34,0xF8FF00,0.2) --- 4
+end
+end
+end
+end --- takim 3 end
+if takim[name].takima==2 then --- takim 2 end
+if takim[name].sira==0 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis2(i,name)
+end
+end
+elseif takim[name].sira==1 then
+if callback=="yer1" then
+if yerid4==1 then
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+table.insert(r21,t,yer1)
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..yer1,name)
+break
+end
+end
+elseif yerid4==2 then
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+table.insert(r22,t,yer1)
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..yer1,name)
+break
+end
+end
+elseif yerid4==3 then
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+table.insert(r23,t,yer1)
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..yer1,name)
+break
+end
+end
+elseif yerid4==4 then
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+table.insert(r24,t,yer1)
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..yer1,name)
+break
+end
+end
+end
+ui.updateTextArea(1011,"<b><font size='25' color='#FFFFFF'>X",nill)
+takim[name].sira=2
+end
+if callback=="tascek" then
+tasrenkrandom2=math.random(1,4)
+if tasrenkrandom2==1 then
+tas21=r1[math.random(#r1)]
+removekey(r1,tas21)
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..tas21,name)
+table.insert(r21,t,tas21)
+break
+end
+end
+elseif tasrenkrandom2==2 then
+tas22=r2[math.random(#r2)]
+removekey(r2,tas22)
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..tas22,name)
+table.insert(r22,t,tas22)
+break
+end
+end
+elseif tasrenkrandom2==3 then
+tas23=r3[math.random(#r3)]
+removekey(r3,tas23)
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..tas23,name)
+table.insert(r23,t,tas23)
+break
+end
+end
+elseif tasrenkrandom2==4 then
+tas24=r4[math.random(#r4)]
+removekey(r4,tas24)
+for t=1,26,1 do
+if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..tas24,name)
+table.insert(r24,t,tas24)
+break
+end
+end
+end
+takim[name].sira=2
+end -- tascek
+elseif takim[name].sira==2 then
+for k=1,26,1 do
+if callback=="x"..k then
+if r21[k] ~= -1 then
+yer2=r21[k]
+yerid4=1
+r21[k]=-1
+ui.updateTextArea(1012,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer2'>"..yer2,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r22[k] ~= -2 then ---ASDASD
+yer2=r22[k]
+yerid4=2
+r22[k]=-2
+ui.updateTextArea(1012,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:yer2'>"..yer2,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r23[k] ~= -3 then
+yer2=r23[k]
+yerid4=3
+r23[k]=-3
+ui.updateTextArea(1012,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:yer2'>"..yer2,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+elseif r24[k] ~= -4 then
+yer2=r24[k]
+yerid4=4
+r24[k]=-4
+ui.updateTextArea(1012,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:yer2'>"..yer2,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa1].sira=1
+end
+ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
+ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
+ui.addTextArea(1009," ",nill,707,120,65,65,0x30BB34,0xF8FF00,0.2) --- 3
+ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2) --- 4
+end
+end
+end
+end --- takim 2 end
+if takim[name].takima==1 then --- takim 1 end
+if takim[name].sira==0 then
+for i=1,26,1 do
+if callback=="x"..i then
+tasdegis1(i,name)
+end
+end
+elseif takim[name].sira==1 then
+if callback=="yer4" then
+if yerid4==1 then
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+table.insert(r11,t,yer4)
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..yer4,name)
+break
+end
+end
+elseif yerid4==2 then
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+table.insert(r12,t,yer4)
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..yer4,name)
+break
+end
+end
+elseif yerid4==3 then
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+table.insert(r13,t,yer4)
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..yer4,name)
+break
+end
+end
+elseif yerid4==4 then
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+table.insert(r14,t,yer4)
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..yer4,name)
+break
+end
+end
+end
+ui.addTextArea(1014,"<b><font size='25' color='#FFFFFF'>X",nill,150,80,45,45,0xFFFFFF,0xFFFFFF,500)
+takim[name].sira=2
+end
+if callback=="tascek" then
+tasrenkrandom1=math.random(1,4)
+if tasrenkrandom1==1 then
+tas11=r1[math.random(#r1)]
+removekey(r1,tas11)
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:x"..t.."'>"..tas11,name)
+table.insert(r11,t,tas11)
+break
+end
+end
+elseif tasrenkrandom1==2 then
+tas12=r2[math.random(#r2)]
+removekey(r2,tas12)
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:x"..t.."'>"..tas12,name)
+table.insert(r12,t,tas12)
+break
+end
+end
+elseif tasrenkrandom1==3 then
+tas13=r3[math.random(#r3)]
+removekey(r3,tas13)
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:x"..t.."'>"..tas13,name)
+table.insert(r13,t,tas13)
+break
+end
+end
+elseif tasrenkrandom1==4 then
+tas14=r4[math.random(#r4)]
+removekey(r4,tas14)
+for t=1,26,1 do
+if r11[t] == -1 and r12[t] == -2  and r13[t] == -3  and r14[t] == -4 then
+ui.updateTextArea(t,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..t.."'>"..tas14,name)
+table.insert(r14,t,tas14)
+break
+end
+end
+end
+takim[name].sira=2
+end -- tascek
+elseif takim[name].sira==2 then
+for k=1,26,1 do
+if callback=="x"..k then
+if r11[k] ~= -1 then
+yer1=r11[k]
+yerid4=1
+r11[k]=-1
+ui.updateTextArea(1011,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer1'>"..yer1,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa2].sira=1
+elseif r12[k] ~= -2 then
+yer1=r12[k]
+yerid4=2
+r12[k]=-2
+ui.updateTextArea(1011,"<b><font size='25' color='#BB3030'><p align='center'><a href='event:yer1'>"..yer1,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa2].sira=1
+elseif r13[k] ~= -3 then
+yer1=r13[k]
+yerid4=3
+r13[k]=-3
+ui.updateTextArea(1011,"<b><font size='25' color='#38BB30'><p align='center'><a href='event:yer1'>"..yer1,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa2].sira=1
+elseif r14[k] ~= -4 then
+yer1=r14[k]
+yerid4=4
+r14[k]=-4
+ui.updateTextArea(1011,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:yer1'>"..yer1,nill)
+ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
+takim[name].sira=0
+takim[masa2].sira=1
+end
+ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
+ui.addTextArea(1008,"",nill,360,220,65,65,0x30BB34,0xF8FF00,0.2) --- 2
+ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2) --- 3
+ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2) --- 4
+end
+end
+end
+end --- takim 1 end
+-- baslat bas
+if callback=="baslat" then
+ui.removeTextArea(0,name)
+yer=r1[math.random(#r1)]
+yer4=yer
+yerid4=1
+removekey(r1,yer)
+ui.addTextArea(1011,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:yer1'>X",nill,150,220,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1012,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:yer2'>X",nill,610,220,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1013,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:yer3'>X",nill,610,80,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1014,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer4'>"..yer,nill,150,80,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1015,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:okey'>X",nill,380,150,45,45,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(666,"<b><font size='10' color='#131313'><p align='center'><a href='event:okey'>Tüm taşlarım düzgün!<br>Oyunu Bitir",nill,450,150,70,n,0xFFFFFF,0xFFFFFF,500)
+ui.addTextArea(1016,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:tascek'>+",nill,320,150,45,45,0xFFFFFF,0xFFFFFF,500)
+end
+-- baslat son
 if callback=="a1" then
+masa1=name
 takim[name].takima=1
+takim[name].sira=1
 ui.removeTextArea(1001,nill)
 ui.removeTextArea(1002,name)
 ui.removeTextArea(1003,name)
@@ -88,13 +634,9 @@ ui.addTextArea(1006," ",nill,27,120,65,65,0x30BB34,0xF8FF00,0.2)
 tfm.exec.movePlayer(name,60,150)
 ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
 ui.addTextArea(0,"<b><font size='15' color='#2CFF00'><p align='center'><a href='event:baslat'>Oyunu Baslat</p></font>Not!: 4 kişi masaya oturmadan başlatırsanız hata alırsınız.",name,350,120,100,120,0x30BB34,0xF8FF00,0.2)
-
 for i=1,26,1 do
-
-
 randomcolor1=math.random(1,4)
-
-if i<=14 then
+if i<=13 then
 if randomcolor1==1 then
 sallama1=r1[math.random(#r1)]
 table.insert(r11,i,sallama1)
@@ -127,20 +669,13 @@ ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='
 else
 table.insert(r14,i,-4)
 end
-
 else -- i>13
 ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x1,y1,45,45,0xFFFFFF,0xFFFFFF,500)
-
 table.insert(r11,i,-1)
 table.insert(r12,i,-2)
 table.insert(r13,i,-3)
 table.insert(r14,i,-4)
-
-
 end --i<=13
-
-
-
 if y1<300 then
 y1=345
 else
@@ -148,40 +683,20 @@ y1=290
 x1=x1+60
 end
 end
-
-
-
 end --a1 end
-
-
-
-
-
-
-
-
-
-
-
-
-
 if callback=="a2" then
+masa2=name
 takim[name].takima=2
 ui.removeTextArea(1001,name)
 ui.removeTextArea(1002,nill)
 ui.removeTextArea(1003,name)
 ui.removeTextArea(1004,name)
-ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2)
-tfm.exec.movePlayer(name,400,40)
+ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,400,250)
 ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
-
 for i=1,26,1 do
-
-
 randomcolor2=math.random(1,4)
-
 if i<=13 then
-
 if randomcolor2==1 then
 sallama2=r1[math.random(#r1)]
 table.insert(r21,i,sallama2)
@@ -214,20 +729,13 @@ ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='
 else
 table.insert(r24,i,-4)
 end
-
 else -- i>13
 ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x2,y2,45,45,0xFFFFFF,0xFFFFFF,500)
-
 table.insert(r21,i,-1)
 table.insert(r22,i,-2)
 table.insert(r23,i,-3)
 table.insert(r24,i,-4)
-
-
 end --i<=13
-
-
-
 if y2<300 then
 y2=345
 else
@@ -235,30 +743,20 @@ y2=290
 x2=x2+60
 end
 end
-
-
 end -- a2 end
-
-
-
-
 if callback=="a3" then
+masa3=name
 takim[name].takima=3
 ui.removeTextArea(1001,name)
 ui.removeTextArea(1002,name)
 ui.removeTextArea(1003,nill)
 ui.removeTextArea(1004,name)
-ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2)
-
+ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,740,120)
 ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
-tfm.exec.movePlayer(name,400,250)
 for i=1,26,1 do
-
-
 randomcolor3=math.random(1,4)
-
 if i<=13 then
-
 if randomcolor3==1 then
 sallama3=r1[math.random(#r1)]
 table.insert(r31,i,sallama3)
@@ -291,20 +789,13 @@ ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='
 else
 table.insert(r34,i,-4)
 end
-
 else -- i>13
 ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x3,y3,45,45,0xFFFFFF,0xFFFFFF,500)
-
 table.insert(r31,i,-1)
 table.insert(r32,i,-2)
 table.insert(r33,i,-3)
 table.insert(r34,i,-4)
-
-
 end --i<=13
-
-
-
 if y3<300 then
 y3=345
 else
@@ -312,28 +803,21 @@ y3=290
 x3=x3+60
 end
 end
-
-
-
 end
 --- a3 end
 if callback=="a4" then
+masa4=name
 takim[name].takima=4
 ui.removeTextArea(1001,name)
 ui.removeTextArea(1002,name)
 ui.removeTextArea(1003,name)
 ui.removeTextArea(1004,nill)
-ui.addTextArea(1009," ",nill,707,120,65,65,0x000000,0xF8FF00,0.2)
-tfm.exec.movePlayer(name,740,120)
+ui.addTextArea(1007," ",nill,360,20,65,65,0x000000,0xF8FF00,0.2)
+tfm.exec.movePlayer(name,400,40)
 ui.addTextArea(1005," ",name,20,290,770,100,0x000000,0xF8FF00,500)
-
 for i=1,26,1 do
-
-
 randomcolor4=math.random(1,4)
-
 if i<=13 then
-
 if randomcolor4==1 then
 sallama4=r1[math.random(#r1)]
 table.insert(r41,i,sallama4)
@@ -366,20 +850,13 @@ ui.addTextArea(i,"<b><font size='25' color='#BABB30'><p align='center'><a href='
 else
 table.insert(r44,i,-4)
 end
-
 else -- i>13
 ui.addTextArea(i,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..i.."'>X",name,x4,y4,45,45,0xFFFFFF,0xFFFFFF,500)
-
 table.insert(r41,i,-1)
 table.insert(r42,i,-2)
 table.insert(r43,i,-3)
 table.insert(r44,i,-4)
-
-
 end --i<=13
-
-
-
 if y4<300 then
 y4=345
 else
@@ -389,77 +866,10 @@ end
 end
 end 
 --- a4 end
-
-
-
-if takim[name].takima==1 then
-for i=1,26,1 do
-if callback=="x"..i then
-tasdegis1(i,name)
-end
-end
-end
-
-if takim[name].takima==2 then
-for i=1,26,1 do
-if callback=="x"..i then
-tasdegis2(i,name)
-end
-end
-end
-
-if takim[name].takima==3 then
-for i=1,26,1 do
-if callback=="x"..i then
-tasdegis3(i,name)
-end
-end
-end
-
-if takim[name].takima==4 then
-for i=1,26,1 do
-if callback=="x"..i then
-tasdegis4(i,name)
-end
-end
-end
-
-
--- baslat bas
-
-
-if callback=="baslat" then
-ui.removeTextArea(0,name)
-ui.addTextArea(1011,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer1'>1",nill,150,220,45,45,0xFFFFFF,0xFFFFFF,500)
-ui.addTextArea(1012,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer2'>2",nill,150,80,45,45,0xFFFFFF,0xFFFFFF,500)
-ui.addTextArea(1013,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer3'>3",nill,610,80,45,45,0xFFFFFF,0xFFFFFF,500)
-ui.addTextArea(1014,"<b><font size='25' color='#7F7F7F'><p align='center'><a href='event:yer4'>4",nill,610,220,45,45,0xFFFFFF,0xFFFFFF,500)
-end
-
-
--- baslat son
-
-
-
-
-
-
 end -- callback end
-
-
-
-
-
-
-
-
-
-
-
 function tasdegis1(i,name) -- tas1 fonk bas
 if takim[name].playeryer==1 then
 k1=i
-
 --- Siyahtan verme baş
 if r11[j1] > 0 then 
 if r11[k1] > 0 then
@@ -509,7 +919,6 @@ ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 --------s5-------")
 end 
 --- Siyahtan verme son
-
 --- Kırmızı verme baş
 elseif r12[j1] > 0 then --- Siyahtan verme baş
 if r12[k1] > 0 then
@@ -558,7 +967,6 @@ ui.updateTextArea(k1,"<b><font size='25' color='#BB3030'><p align='center'><a hr
 ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j1.."'>"..k12,name)
 print("1 ---------k5------")
 end --- Kırmızı verme son
-
 --- yeşil verme baş
 elseif r13[j1] > 0 then --- Siyahtan verme baş
 if r13[k1] > 0 then
@@ -608,7 +1016,6 @@ ui.updateTextArea(j1,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 ---------k5------")
 end 
 --- yeşil verme son
-
 --- Sarı verme baş
 elseif r14[j1] > 0 then --- Siyahtan verme baş
 if r14[k1] > 0 then
@@ -669,11 +1076,9 @@ j14=r14[i]
 takim[name].playeryer=1
 end
 end --- tas1 fonk end
-
 function tasdegis2(i,name) -- tas2 fonk bas
 if takim[name].playeryer==1 then
 k2=i
-
 --- Siyahtan verme baş
 if r21[j2] > 0 then 
 if r21[k2] > 0 then
@@ -723,7 +1128,6 @@ ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 --------s5-------")
 end 
 --- Siyahtan verme son
-
 --- Kırmızı verme baş
 elseif r22[j2] > 0 then --- Siyahtan verme baş
 if r22[k2] > 0 then
@@ -772,7 +1176,6 @@ ui.updateTextArea(k2,"<b><font size='25' color='#BB3030'><p align='center'><a hr
 ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j2.."'>"..k22,name)
 print("1 ---------k5------")
 end --- Kırmızı verme son
-
 --- yeşil verme baş
 elseif r23[j2] > 0 then --- Siyahtan verme baş
 if r23[k2] > 0 then
@@ -822,7 +1225,6 @@ ui.updateTextArea(j2,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 ---------k5------")
 end 
 --- yeşil verme son
-
 --- Sarı verme baş
 elseif r24[j2] > 0 then --- Siyahtan verme baş
 if r24[k2] > 0 then
@@ -883,11 +1285,9 @@ j24=r24[i]
 takim[name].playeryer=1
 end
 end --- tas2 fonk end
-
 function tasdegis3(i,name) -- tas3 fonk bas
 if takim[name].playeryer==1 then
 k3=i
-
 --- Siyahtan verme baş
 if r31[j3] > 0 then 
 if r31[k3] > 0 then
@@ -937,7 +1337,6 @@ ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 --------s5-------")
 end 
 --- Siyahtan verme son
-
 --- Kırmızı verme baş
 elseif r32[j3] > 0 then --- Siyahtan verme baş
 if r32[k3] > 0 then
@@ -986,7 +1385,6 @@ ui.updateTextArea(k3,"<b><font size='25' color='#BB3030'><p align='center'><a hr
 ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j3.."'>"..k32,name)
 print("1 ---------k5------")
 end --- Kırmızı verme son
-
 --- yeşil verme baş
 elseif r33[j3] > 0 then --- Siyahtan verme baş
 if r33[k3] > 0 then
@@ -1036,7 +1434,6 @@ ui.updateTextArea(j3,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 ---------k5------")
 end 
 --- yeşil verme son
-
 --- Sarı verme baş
 elseif r34[j3] > 0 then --- Siyahtan verme baş
 if r34[k3] > 0 then
@@ -1097,11 +1494,9 @@ j34=r34[i]
 takim[name].playeryer=1
 end
 end --- tas3 fonk end
-
 function tasdegis4(i,name) -- tas4 fonk bas
 if takim[name].playeryer==1 then
 k4=i
-
 --- Siyahtan verme baş
 if r41[j4] > 0 then 
 if r41[k4] > 0 then
@@ -1151,7 +1546,6 @@ ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 --------s5-------")
 end 
 --- Siyahtan verme son
-
 --- Kırmızı verme baş
 elseif r42[j4] > 0 then --- Siyahtan verme baş
 if r42[k4] > 0 then
@@ -1200,7 +1594,6 @@ ui.updateTextArea(k4,"<b><font size='25' color='#BB3030'><p align='center'><a hr
 ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a href='event:x"..j4.."'>"..k42,name)
 print("1 ---------k5------")
 end --- Kırmızı verme son
-
 --- yeşil verme baş
 elseif r43[j4] > 0 then --- Siyahtan verme baş
 if r43[k4] > 0 then
@@ -1250,7 +1643,6 @@ ui.updateTextArea(j4,"<b><font size='25' color='#BABB30'><p align='center'><a hr
 print("1 ---------k5------")
 end 
 --- yeşil verme son
-
 --- Sarı verme baş
 elseif r44[j4] > 0 then --- Siyahtan verme baş
 if r44[k4] > 0 then
@@ -1311,55 +1703,45 @@ j44=r44[i]
 takim[name].playeryer=1
 end
 end --- tas4 fonk end
-
-
-
-
-
-
-
-
-
-
-
-
 function eventChatMessage(name,message)
 if message=="si1" then
 for anahtar,deger in ipairs(r11) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
 print(anahtar.." |siyah "..deger) -- verilen anahtarı ve değeri yazdırdık
 end
 end
-
 if message=="ki1" then
 for anahtar,deger in ipairs(r12) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
 print(anahtar.." |k "..deger) -- verilen anahtarı ve değeri yazdırdık
 end
 end
-
 if message=="ye1" then
 for anahtar,deger in ipairs(r13) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
 print(anahtar.." |y "..deger) -- verilen anahtarı ve değeri yazdırdık
 end
 end
-
 if message=="sa1" then
 for anahtar,deger in ipairs(r14) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
 print(anahtar.." |sari "..deger) -- verilen anahtarı ve değeri yazdırdık
 end
 end
-
-
+if message=="si2" then
+for anahtar,deger in ipairs(r21) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |siyah "..deger) -- verilen anahtarı ve değeri yazdırdık
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
+end
+if message=="ki2" then
+for anahtar,deger in ipairs(r22) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |k "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+if message=="ye2" then
+for anahtar,deger in ipairs(r23) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |y "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+if message=="sa2" then
+for anahtar,deger in ipairs(r24) do -- tabloyu döndürdük (bize her elemanın sırasını ve değerini değişken olarak verir)
+print(anahtar.." |sari "..deger) -- verilen anahtarı ve değeri yazdırdık
+end
+end
+end
