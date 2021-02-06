@@ -79,7 +79,7 @@ end
 end
 elseif takim[name].sira==1 then
 if callback=="yer3" then
-if yerid4==1 then
+if yerid3==1 then
 for t=1,26,1 do
 if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
 r41[t]=yer3
@@ -88,7 +88,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==2 then
+elseif yerid3==2 then
 for t=1,26,1 do
 if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
 r42[t]=yer3
@@ -96,7 +96,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==3 then
+elseif yerid3==3 then
 for t=1,26,1 do
 if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
 r43[t]=yer3
@@ -104,7 +104,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==4 then
+elseif yerid3==4 then
 for t=1,26,1 do
 if r41[t] == -1 and r42[t] == -2  and r43[t] == -3  and r44[t] == -4 then
 r44[t]=yer3
@@ -214,7 +214,7 @@ end
 end
 elseif takim[name].sira==1 then
 if callback=="yer2" then
-if yerid4==1 then
+if yerid2==1 then
 for t=1,26,1 do
 if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
 r31[t]=yer2
@@ -222,7 +222,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==2 then
+elseif yerid2==2 then
 for t=1,26,1 do
 if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
 r32[t]=yer2
@@ -230,7 +230,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==3 then
+elseif yerid2==3 then
 for t=1,26,1 do
 if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
 r33[t]=yer2
@@ -238,7 +238,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==4 then
+elseif yerid2==4 then
 for t=1,26,1 do
 if r31[t] == -1 and r32[t] == -2  and r33[t] == -3  and r34[t] == -4 then
 r34[t]=yer2
@@ -348,7 +348,7 @@ end
 end
 elseif takim[name].sira==1 then
 if callback=="yer1" then
-if yerid4==1 then
+if yerid1==1 then
 for t=1,26,1 do
 if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
 r21[t]=yer1
@@ -356,7 +356,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#7F7F7F'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==2 then
+elseif yerid1==2 then
 for t=1,26,1 do
 if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
 r22[t]=yer1
@@ -364,7 +364,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#BB3030'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==3 then
+elseif yerid1==3 then
 for t=1,26,1 do
 if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
 r23[t]=yer1
@@ -372,7 +372,7 @@ ui.updateTextArea(t,"<b><font size='25' color='#38BB30'><p align='center'><a hre
 break
 end
 end
-elseif yerid4==4 then
+elseif yerid1==4 then
 for t=1,26,1 do
 if r21[t] == -1 and r22[t] == -2  and r23[t] == -3  and r24[t] == -4 then
 r24[t]=yer1
