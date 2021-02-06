@@ -40,11 +40,11 @@ x3=20
 y4=290
 x4=20
 takim={}
----function eventLoop()
----for name in pairs (tfm.get.room.playerList) do
----print(name.." "..takim[name].sira)
----end
----end
+function eventLoop()
+for name in pairs (tfm.get.room.playerList) do
+print(name.." "..takim[name].sira)
+end
+end
 function removekey(rx,sayi)
 for anahtar,deger in ipairs(rx) do
 if deger==sayi then
@@ -172,6 +172,7 @@ ui.updateTextArea(1014,"<b><font size='25' color='#7F7F7F'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa1].sira=1
+break
 elseif r42[k] ~= -2 then
 yer4=r42[k]
 yerid4=2
@@ -180,6 +181,7 @@ ui.updateTextArea(1014,"<b><font size='25' color='#BB3030'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa1].sira=1
+break
 elseif r43[k] ~= -3 then
 yer4=r43[k]
 yerid4=3
@@ -188,6 +190,7 @@ ui.updateTextArea(1014,"<b><font size='25' color='#38BB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa1].sira=1
+break
 elseif r44[k] ~= -4 then
 yer4=r44[k]
 yerid4=4
@@ -196,6 +199,7 @@ ui.updateTextArea(1014,"<b><font size='25' color='#BABB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa1].sira=1
+break
 end
 ui.addTextArea(1006," ",nill,27,120,65,65,0x30BB34,0xF8FF00,0.2) --- 1
 ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
@@ -306,6 +310,7 @@ ui.updateTextArea(1013,"<b><font size='25' color='#7F7F7F'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa4].sira=1
+break
 elseif r32[k] ~= -2 then
 yer3=r32[k]
 yerid3=2
@@ -314,6 +319,7 @@ ui.updateTextArea(1013,"<b><font size='25' color='#BB3030'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa4].sira=1
+break
 elseif r33[k] ~= -3 then
 yer3=r33[k]
 yerid3=3
@@ -322,6 +328,7 @@ ui.updateTextArea(1013,"<b><font size='25' color='#38BB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa4].sira=1
+break
 elseif r34[k] ~= -4 then
 yer3=r34[k]
 yerid3=4
@@ -330,6 +337,7 @@ ui.updateTextArea(1013,"<b><font size='25' color='#BABB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa4].sira=1
+break
 end
 ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
 ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
@@ -441,6 +449,7 @@ ui.updateTextArea(1012,"<b><font size='25' color='#7F7F7F'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa3].sira=1
+break
 elseif r22[k] ~= -2 then ---ASDASD
 yer2=r22[k]
 yerid2=2
@@ -449,6 +458,7 @@ ui.updateTextArea(1012,"<b><font size='25' color='#BB3030'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa3].sira=1
+break
 elseif r23[k] ~= -3 then
 yer2=r23[k]
 yerid2=3
@@ -457,6 +467,7 @@ ui.updateTextArea(1012,"<b><font size='25' color='#38BB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa3].sira=1
+break
 elseif r24[k] ~= -4 then
 yer2=r24[k]
 yerid2=4
@@ -465,6 +476,7 @@ ui.updateTextArea(1012,"<b><font size='25' color='#BABB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa3].sira=1
+break
 end
 ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
 ui.addTextArea(1008,"",nill,360,220,65,65,0x000000,0xF8FF00,0.2) --- 2
@@ -575,6 +587,7 @@ ui.updateTextArea(1011,"<b><font size='25' color='#7F7F7F'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa2].sira=1
+break
 elseif r12[k] ~= -2 then
 yer1=r12[k]
 yerid1=2
@@ -583,6 +596,7 @@ ui.updateTextArea(1011,"<b><font size='25' color='#BB3030'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa2].sira=1
+break
 elseif r13[k] ~= -3 then
 yer1=r13[k]
 yerid1=3
@@ -591,6 +605,7 @@ ui.updateTextArea(1011,"<b><font size='25' color='#38BB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa2].sira=1
+break
 elseif r14[k] ~= -4 then
 yer1=r14[k]
 yerid1=4
@@ -599,6 +614,7 @@ ui.updateTextArea(1011,"<b><font size='25' color='#BABB30'><p align='center'><a 
 ui.updateTextArea(k,"<b><font size='25' color='#FFFFFF'><p align='center'><a href='event:x"..k.."'>X",name)
 takim[name].sira=0
 takim[masa2].sira=1
+break
 end
 ui.addTextArea(1006," ",nill,27,120,65,65,0x000000,0xF8FF00,0.2) --- 1
 ui.addTextArea(1008,"",nill,360,220,65,65,0x30BB34,0xF8FF00,0.2) --- 2
