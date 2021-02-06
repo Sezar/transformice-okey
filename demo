@@ -610,6 +610,7 @@ end
 end --- takim 1 end
 -- baslat bas
 if callback=="baslat" then
+takim[name].sira=1
 ui.removeTextArea(0,name)
 yer=r1[math.random(#r1)]
 yer4=yer
@@ -627,7 +628,6 @@ end
 if callback=="a1" then
 masa1=name
 takim[name].takima=1
-takim[name].sira=1
 ui.removeTextArea(1001,nill)
 ui.removeTextArea(1002,name)
 ui.removeTextArea(1003,name)
